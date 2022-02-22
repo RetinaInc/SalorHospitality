@@ -14,6 +14,8 @@ class Item < ActiveRecord::Base
   #attr_accessible :user_id, :confirmation_count, :preparation_user_id, :delivery_user_id, :vendor_id, :company_id, :hidden_by, :price, :order_id, :scribe, :settlement_id, :cost_center_id, :statistic_category_id
   
   include Scope
+  include Base
+  
   belongs_to :order
   belongs_to :article
   belongs_to :quantity
@@ -24,6 +26,8 @@ class Item < ActiveRecord::Base
   belongs_to :category
   belongs_to :settlement
   belongs_to :cost_center
+  belongs_to :item_type
+  
   has_many :tax_items
   has_many :option_items
   validates_presence_of :count, :article_id
@@ -210,7 +214,6 @@ class Item < ActiveRecord::Base
     write_attribute(:count, c)
     write_attribute(:max_count, c) if c > self.max_count
     write_attribute(:min_count, c) if self.min_count.nil? or c < self.min_count
-    write_attribute(:printed_count, c) if self.count < self.printed_count
   end
 
   def options_price
@@ -295,7 +298,7 @@ class Item < ActiveRecord::Base
       split_order.user_id = parent_order.user_id
       split_order.company_id = parent_order.company_id
       split_order.vendor_id = parent_order.vendor_id
-      split_order.nr = parent_order.vendor.get_unique_model_number('order')
+      split_order.nr = parent_order.vendor.get_next_transaction_number('invoice')
       parent_order.order = split_order
       split_order.order = parent_order
     end

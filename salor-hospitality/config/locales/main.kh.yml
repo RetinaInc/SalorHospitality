@@ -13,6 +13,7 @@ kh:
         statistic_category_id: Statistic-Category
         taxes: Tax
         usage: Usage
+        item_type: Type
       booking_item:
         base_price: Price
         count: Count
@@ -171,6 +172,7 @@ kh:
         name: Name
         percent: Tax in %
         statistics_by_category: Settlement Statistics by Category
+        tpe: Type
       tax_amount:
         amount: Amount
         tax_id: Tax
@@ -211,6 +213,7 @@ kh:
         invoice_logo: Invoice Logo
         logo: Screen logo
         name: Name
+        print_count_reductions: Print count reductions
         receipt_footer_blurb: Receipt footer blurb
         receipt_header_blurb: Receipt header blurb
         remote_orders: Remote orders
@@ -236,12 +239,15 @@ kh:
         cut_every_ticket: Cut every ticket
         hidden: Delete
         name: Name
+        one_ticket_per_piece: One ticket per piece
         path: Path
         print_button_filename: Icon
         pulse_receipt: Beep Receipt
         pulse_tickets: Beep Tickets
         ticket_ad: Ticket Ad.
-        one_ticket_per_piece: One ticket per piece
+      item_type:
+        behavior: Behavior
+        name: Name
     errors:
       messages:
         dont_use_weird_skus: may only contain letters A-Z and a-z and numbers from
@@ -367,6 +373,9 @@ kh:
       vendor_printer:
         one: Printer
         other: Printers
+      item_type:
+        one: Item Type
+        other: Item Types
   admin: Admin
   are_you_sure: Are you sure?
   articles:
@@ -511,7 +520,7 @@ kh:
   kitchen: Kitchen
   layouts:
     application:
-      admin_menu_hint: "☚ Click here to open the main menu"
+      admin_menu_hint: ☚ Click here to open the main menu
       submit_scribe: OK
     header:
       settings_common: General
@@ -617,7 +626,7 @@ kh:
       new_page: New Page
   partials:
     default_blurb: edit me
-    error_during_evaluation: 'Error: '
+    error_during_evaluation: ! 'Error: '
     no_presentation_found:
       no_presentations_found: No template defined for this partial.
   payment_methods:
@@ -798,9 +807,9 @@ kh:
       username: User
   settlements:
     detailed_list:
-      changed_price: "%{byuser} changed price"
+      changed_price: ! '%{byuser} changed price'
       count: Count
-      order_number_on_table_on_date: "%{order} number %{number} on %{table} at %{time}"
+      order_number_on_table_on_date: ! '%{order} number %{number} on %{table} at %{time}'
       reduced_count: Count reduced from %{maxcount} to %{count}.
       revenue: Revenue
       total: Total
@@ -894,15 +903,15 @@ kh:
     customer_request_waiter: Request waiter
     delete: Delete
     display: Display
-    double_submission_warning: 'Warning: Double submission. Please inform tech support
+    double_submission_warning: ! 'Warning: Double submission. Please inform tech support
       about this.'
     download: Download
     end: End
     exception_page:
       assistance_text: Please click on the Button "HOME" and try again. If you see
         the same error twice, please contact our Customer Support.
-      exception_description: 'Error Description:'
-      exception_in_files: 'The Error occurred in the following files:'
+      exception_description: ! 'Error Description:'
+      exception_in_files: ! 'The Error occurred in the following files:'
       oops_an_error_occurred: Oops! An Error occurred
     finish_was_requested: You have requested payment. Please have a little patience,
       we will be there for your shortly.
@@ -956,7 +965,7 @@ kh:
     form:
       add_printer: Add printer
       identify_printers: Identify Printers
-      print_via_salorbin_explanation: 'If you want to print via the salor-bin browser,
+      print_via_salorbin_explanation: ! 'If you want to print via the salor-bin browser,
         copy and paste the following details to the options dialog of salor-bin:'
       test_printers: Test Printers
       test_printers_chartest: Test all characters
@@ -973,3 +982,7 @@ kh:
   winered: Wine Red
   wrong_password: Wrong login data
   yellow: Yellow
+  item_type_names:
+    coupon: Coupon
+    gift_card: Gift Card
+    normal: Normal

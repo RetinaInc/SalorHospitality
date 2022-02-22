@@ -5,7 +5,7 @@ tr:
       article:
         active: XXX active
         category_id: Kategori
-        description: "Ürün tarifi"
+        description: Ürün tarifi
         hidden: Silmek
         image: XXX Image
         name: Isim
@@ -13,6 +13,7 @@ tr:
         statistic_category_id: Statistic-Category
         taxes: Tax
         usage: Kullanım
+        item_type: Type
       booking_item:
         base_price: Preis
         count: Anzahl
@@ -171,6 +172,7 @@ tr:
         name: Isim
         percent: Vergi yüzedesi %
         statistics_by_category: Settlement Statistics by Category
+        tpe: Type
       tax_amount:
         amount: Amount
         tax_id: Tax
@@ -211,6 +213,7 @@ tr:
         invoice_logo: XXX Invoice Logo
         logo: XXX Screen logo
         name: Name
+        print_count_reductions: Print count reductions
         receipt_footer_blurb: Receipt footer blurb
         receipt_header_blurb: Receipt header blurb
         remote_orders: Remote orders
@@ -236,12 +239,15 @@ tr:
         cut_every_ticket: Cut every ticket
         hidden: XXXDelete
         name: XXXName
+        one_ticket_per_piece: One ticket per piece
         path: XXXPath
         print_button_filename: Icon
         pulse_receipt: Beep Receipt
         pulse_tickets: Beep Tickets
         ticket_ad: Ticket Ad.
-        one_ticket_per_piece: One ticket per piece
+      item_type:
+        behavior: Behavior
+        name: Name
     errors:
       messages:
         dont_use_weird_skus: may only contain letters A-Z and a-z and numbers from
@@ -251,8 +257,8 @@ tr:
         sku_already_taken: has already been taken
     models:
       article:
-        one: "Ürün"
-        other: "Ürünler"
+        one: Ürün
+        other: Ürünler
       booking:
         one: Booking
         other: Bookings
@@ -263,8 +269,8 @@ tr:
         one: Kategori
         other: Kategoriler
       company:
-        one: "Şirket"
-        other: "Şirketler"
+        one: Şirket
+        other: Şirketler
       cost_center:
         one: Maliyet merkezi
         other: Maliyet merkezleri
@@ -367,6 +373,9 @@ tr:
       vendor_printer:
         one: XXXPrinter
         other: XXXPrinters
+      item_type:
+        one: Item Type
+        other: Item Types
   admin: Admin
   are_you_sure: Emin misiniz?
   articles:
@@ -381,7 +390,7 @@ tr:
         other: Varyant
     index:
       list_all: Herseyi göster
-      preview: "Öngörüs"
+      preview: Öngörüs
       search_term: Arama kelimesi
       sort: XXXSort
       update: XXXUpdate!
@@ -390,7 +399,7 @@ tr:
       all_articles: Bütün ürünlerin listesi
     new:
       add_quantity: Varyant eklemek
-      edit_article: "Ürün islemek"
+      edit_article: Ürün islemek
       new_article: Yeni ürün
       normal: normal
       takeaway: götürmek için
@@ -447,7 +456,7 @@ tr:
       sidedish: Ilave
       soup: XXX Soup
       sparkling: Köpüklü sarap
-      starter: "Ön yemekler"
+      starter: Ön yemekler
       tea: Cay bardagı
       teapot: Caydanlık
       whitewinebottle: Sise beyaz sarap
@@ -467,7 +476,7 @@ tr:
       edit_cost_center: Maliyet merkezi islemek
       new_cost_center: Yeni maliyet merkezi
   count: Miktar
-  create: "Üretmek"
+  create: Üretmek
   customers:
     create:
       success: Customer successfully saved
@@ -511,13 +520,13 @@ tr:
   kitchen: Mutfak
   layouts:
     application:
-      admin_menu_hint: "☚ Click here to open the main menu"
+      admin_menu_hint: ☚ Click here to open the main menu
       submit_scribe: OK
     header:
       settings_common: General
       settings_hotel: Hotel
       settings_restaurant: Restaurant
-  logout: "%{who} cikis yapmak"
+  logout: ! '%{who} cikis yapmak'
   messages:
     hello_username: Hello %{name}!
     user_account_is_currently_locked: Account is locked
@@ -599,8 +608,8 @@ tr:
       count: Miktar
       list_of_taxes: Vergi listesi
       next_invoice: Sonraki Fatura
-      previous_invoice: "Önceki Fatura"
-      print_business_invoice: "Şirket fatura basmak"
+      previous_invoice: Önceki Fatura
+      print_business_invoice: Şirket fatura basmak
       print_invoice: Fatura basmak
       reactivate: Reactivate
       search_by_number: XXXSearch by number
@@ -618,7 +627,7 @@ tr:
       new_page: New Page
   partials:
     default_blurb: XXXDefault Text
-    error_during_evaluation: 'XXXError: '
+    error_during_evaluation: ! 'XXXError: '
     no_presentation_found:
       no_presentations_found: XXXNo template defined for this partial.
   payment_methods:
@@ -627,7 +636,7 @@ tr:
     destroy:
       success: Payment Method successfully deleted
   pink: Pembe
-  please_enter_item_comment: "Özel istek"
+  please_enter_item_comment: Özel istek
   please_enter_item_price: Fiyet
   presentations:
     new:
@@ -799,9 +808,9 @@ tr:
       username: User
   settlements:
     detailed_list:
-      changed_price: "%{byuser} changed price"
+      changed_price: ! '%{byuser} changed price'
       count: Miktar
-      order_number_on_table_on_date: "%{order} %{number} auf %{table} am %{time}"
+      order_number_on_table_on_date: ! '%{order} %{number} auf %{table} am %{time}'
       reduced_count: Count reduced from %{maxcount} to %{count}.
       revenue: Ciro
       total: Hepsi
@@ -895,15 +904,15 @@ tr:
     customer_request_waiter: Request waiter
     delete: Delete
     display: Display
-    double_submission_warning: 'Warning: Double submission. Please inform tech support
+    double_submission_warning: ! 'Warning: Double submission. Please inform tech support
       about this.'
     download: Download
     end: End
     exception_page:
       assistance_text: Please click on the Button "HOME" and try again. If you see
         the same error twice, please contact our Customer Support.
-      exception_description: 'Error Description:'
-      exception_in_files: 'The Error occurred in the following files:'
+      exception_description: ! 'Error Description:'
+      exception_in_files: ! 'The Error occurred in the following files:'
       oops_an_error_occurred: Oops! An Error occurred
     finish_was_requested: You have requested payment. Please have a little patience,
       we will be there for your shortly.
@@ -957,7 +966,7 @@ tr:
     form:
       add_printer: Add printer
       identify_printers: Identify Printers
-      print_via_salorbin_explanation: 'If you want to print via the salor-bin browser,
+      print_via_salorbin_explanation: ! 'If you want to print via the salor-bin browser,
         copy and paste the following details to the options dialog of salor-bin:'
       test_printers: Test Printers
       test_printers_chartest: Test all characters
@@ -974,3 +983,7 @@ tr:
   winered: XXXWine Red
   wrong_password: Yanlis sifre.
   yellow: XXXYellow
+  item_type_names:
+    coupon: Coupon
+    gift_card: Gift Card
+    normal: Normal

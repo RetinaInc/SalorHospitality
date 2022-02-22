@@ -31,6 +31,7 @@ gn:
         odd: "must be odd"
         even: "must be even"
         must_be_ascii: "darf nur A-Z, a-z oder 0-9 enthalten"
+        record_invalid: "Datenbankeintrag ungültig"
 
 
 
@@ -247,6 +248,7 @@ gn:
       date_short: "%d. %b %y"
       date_iso: "%Y-%m-%d"
       time_short: "%H:%M"
+      time_long: "%H:%M:%S"
       month_and_day: "%d. %B"
     am: ""
     pm: ""

@@ -11,12 +11,25 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery
   #helper :all
-  before_filter :fetch_logged_in_user, :set_locale, :set_tailor, :set_up, :autologout_customers
+  before_filter :fetch_logged_in_user
+  before_filter :set_locale
+  before_filter :set_tailor
+  before_filter :set_up
+  before_filter :autologout_customers
+  before_filter :intercept_plugin_requests
 
   helper_method :mobile?, :mobile_special?, :workstation?, :permit
 
   unless SalorHospitality::Application.config.consider_all_requests_local
     rescue_from(Exception, :with => :render_error)
+  end
+  
+  def intercept_plugin_requests
+    if params[:plugin_request] == "true"
+      result = @current_plugin_manager.apply_filter("ajax_request", {})
+      render :json => result.to_json
+      return
+    end
   end
   
   def create_history_for_route
@@ -283,6 +296,12 @@ class ApplicationController < ActionController::Base
       if params[:error] and params[:error].empty? == false
         flash[:error] = params[:error]
       end
+      
+      if @current_vendor
+        @current_plugin_manager = PluginManager.new(@current_vendor, @current_user, params, request)
+      end
+      
+      $PluginManager = @current_plugin_manager
     end
     
     def autologout_customers

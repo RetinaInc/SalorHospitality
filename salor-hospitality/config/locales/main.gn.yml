@@ -2,12 +2,16 @@
 gn:
   activerecord:
     attributes:
+      plugin:
+        filename: Dateiname
+        name: Name
       article:
         active: aktiv?
         category_id: Kategorie
         description: Beschreibung
         hidden: löschen
         image: Bild
+        item_type: Typ
         name: Name
         price: Preis
         statistic_category_id: Statistik-Kategorie
@@ -70,6 +74,9 @@ gn:
         hidden: löschen
         name: Name
         taxes: Steuern
+      item_type:
+        behavior: Verhalten
+        name: Name
       option:
         category_id: Kategorie
         hidden: Löschen
@@ -171,6 +178,7 @@ gn:
         name: Name
         percent: Steuer in %
         statistics_by_category: Losungs-Statistik nach Kategorie
+        tpe: Typ
       tax_amount:
         amount: Betrag
         tax_id: Steuer
@@ -211,6 +219,7 @@ gn:
         invoice_logo: Rechnungslogo
         logo: Bildschirm-Logo
         name: Firmenname
+        print_count_reductions: Reduzierungen auf Ticket
         receipt_footer_blurb: Beleg Fußzeile
         receipt_header_blurb: Beleg Kopfzeile
         remote_orders: Fernbestellungen
@@ -249,6 +258,9 @@ gn:
         prefix_or_postfix_must_be_given: Prefix oder Postfix muss angegeben werden
         sku_already_taken: wird bereits verwendet
     models:
+      plugin:
+        one: Plugin
+        other: Plugins
       article:
         one: Artikel
         other: Artikel
@@ -288,6 +300,9 @@ gn:
       item:
         one: Posten
         other: Posten
+      item_type:
+        one: Artikel-Art
+        other: Artikel-Arten
       option:
         one: Option
         other: Optionen
@@ -501,6 +516,10 @@ gn:
   invoice_numer_X_at_time: Rechnung Nr. %{number} am %{datetime}
   invoices: Invoices
   is_no_number: ist keine Zahl
+  item_type_names:
+    coupon: Coupon
+    gift_card: Gutschein
+    normal: Normal
   items:
     item_tablerow:
       clear: Normal
@@ -510,7 +529,7 @@ gn:
   kitchen: Kueche
   layouts:
     application:
-      admin_menu_hint: "☚ Klicken Sie hier, um das Hauptmenü zu öffnen"
+      admin_menu_hint: ☚ Klicken Sie hier, um das Hauptmenü zu öffnen
       submit_scribe: OK
     header:
       settings_common: Allgemein
@@ -617,7 +636,7 @@ gn:
       new_page: Neue Karte
   partials:
     default_blurb: Text
-    error_during_evaluation: 'Fehler: '
+    error_during_evaluation: ! 'Fehler: '
     no_presentation_found:
       no_presentations_found: Für dieses Element ist noch keine Vorlage definiert.
   payment_methods:
@@ -688,6 +707,7 @@ gn:
       interim_receipt: Zwischenabrechnung
       item_scribe: Handschrift aktivieren
       manage_advertising: Werbung einrichten
+      manage_plugins: Plugins verwalten
       manage_articles: Artikel verwalten
       manage_business_invoice: Geschäftsrechnungen verwalten
       manage_cameras: Kameras verwalten
@@ -801,7 +821,7 @@ gn:
     detailed_list:
       changed_price: Preis verändert von %{byuser}.
       count: Anzahl
-      order_number_on_table_on_date: "%{order} %{number} auf %{table} am %{time}"
+      order_number_on_table_on_date: ! '%{order} %{number} auf %{table} am %{time}'
       reduced_count: Anzahl reduziert von %{maxcount} auf %{count}.
       revenue: Umsatz
       total: Gesamt
@@ -895,7 +915,7 @@ gn:
     customer_request_waiter: Kellner anfragen
     delete: Löschen
     display: Anzeigen
-    double_submission_warning: 'Warnung: Mehrfach-Übermittlung. Bitte informieren
+    double_submission_warning: ! 'Warnung: Mehrfach-Übermittlung. Bitte informieren
       Sie das Techniker-Team über diesen Vorfall.'
     download: Download
     end: Ende
@@ -903,8 +923,8 @@ gn:
       assistance_text: Bitte klicken Sie auf den Button "HOME" und versuchen Sie es
         nochmals. Falls der Fehler erneut auftritt, rufen Sie den Kundensupport. Wir
         sind umgehend um Sie bemüht.
-      exception_description: 'Fehlerbeschreibung:'
-      exception_in_files: 'Der Fehler trat in diesen Dateien auf:'
+      exception_description: ! 'Fehlerbeschreibung:'
+      exception_in_files: ! 'Der Fehler trat in diesen Dateien auf:'
       oops_an_error_occurred: Oops! Es ist leider ein Fehler aufgetreten
     finish_was_requested: Sie haben die Bezahlung angefordert. Bitte haben Sie ein
       wenig Geduld.
@@ -943,7 +963,7 @@ gn:
     tax_amount: Betrag
     time: Zeit
     total_price_abbreviation: GP
-    translations: "Übersetzungen"
+    translations: Übersetzungen
     unamed: Unbenannt
     unit_price_abbreviation: EP
     waiter_was_requested: Sie haben einen Kellner gerufen. Bitte haben Sie ein wenig
@@ -958,7 +978,7 @@ gn:
     form:
       add_printer: Drucker hinzufügen
       identify_printers: Drucker identifizieren
-      print_via_salorbin_explanation: 'Wenn Sie über den Browser salor-bin drucken
+      print_via_salorbin_explanation: ! 'Wenn Sie über den Browser salor-bin drucken
         wollen, fügen Sie die folgenden Informationen in den Optionsdialog des salor-bin
         Browsers ein:'
       test_printers: Drucker testen
